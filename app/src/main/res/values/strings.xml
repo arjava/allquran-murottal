@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">All Qur\'an Murottal</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="pause">Pause</string>
+    <string name="replay">Replayed</string>
+    <string name="resume">Resumed</string>
+    <string name="quran_juz">Murottal Al-Qur\'an JUZ</string>
+    <string name="quran_page">Murottal Al-Qur\'an Page</string>
+    <string name="quran_surah">Murottal Al-Qur\'an Surah</string>
+</resources>

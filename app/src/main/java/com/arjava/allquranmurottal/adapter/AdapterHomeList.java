@@ -2,8 +2,8 @@ package com.arjava.allquranmurottal.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,11 +29,13 @@ public class AdapterHomeList extends RecyclerView.Adapter<AdapterHomeList.ViewHo
     private ArrayList<ModelQori> arrayList;
     private final int[] imageQori;
     private final String[] nameQori;
+    private final String[] urlMurottal;
 
-    public AdapterHomeList(Context context, int[] image, String[] name) {
+    public AdapterHomeList(Context context, int[] image, String[] name, String[] urlMurottal) {
         this.context = context;
         this.imageQori = image;
         this.nameQori = name;
+        this.urlMurottal = urlMurottal;
         notifyDataSetChanged();
     }
 
@@ -52,7 +54,10 @@ public class AdapterHomeList extends RecyclerView.Adapter<AdapterHomeList.ViewHo
             public void onClick(View view) {
                 Toast.makeText(context, "CardClick "+ imageQori[position]+ "dan "+
                         nameQori[position], Toast.LENGTH_SHORT).show();
-                context.startActivity(new Intent(context, SurahListActivity.class));
+                Intent intent = new Intent(context, SurahListActivity.class);
+                intent.putExtra("url_surah", urlMurottal[position]);
+                Log.d("AdapterHomeList", "onClick: url = "+urlMurottal[position]);
+                context.startActivity(intent);
             }
         });
     }

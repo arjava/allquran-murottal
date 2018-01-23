@@ -38,6 +38,22 @@ public class HomeActivity extends AppCompatActivity {
             R.drawable.muhammad_ayob
     };
 
+    String[] urlMurottal = {
+            "http://all-quran.net/documents/Abd_Al_Baset_Muratal/Abd_Al_Baset_Muratal_files/",
+            "http://www.all-quran.com/documents/Mishary-Al-Efasy/Mishary-Al-Efasy_files/",
+            "http://www.all-quran.com/documents/mahmoud-khaleel-alhussary/mahmoud-khaleel-alhussary_files/",
+            "http://www.all-quran.com/documents/Ali-Al-Huthaify/Ali-Al-Huthaify_files/",
+            "http://all-quran.net/documents/Abd_Al_Muhsin_Al_Qasim/Abd_Al_Muhsin_Al_Qasim_files/",
+            "http://www.all-quran.com/documents/Abdullah_Basfer/Abdullah_Basfer_files/",
+            "http://www.all-quran.com/documents/Soud-As-Shuraim/Soud-As-Shuraim_files/",
+            "http://www.all-quran.com/documents/Saad-Al-Ghamidi/Saad-Al-Ghamidi_files/",
+            "http://www.all-quran.com/documents/Hani-ar-Rifai/Hani-ar-Rifai_files/",
+            "http://www.all-quran.com/documents/Mahmood_Ali_Albana_Muratal/Mahmood_Ali_Albana_Muratal_files/",
+            "http://www.all-quran.com/documents/Abu-Bakr-Al-Shatery/Abu-Bakr-Al-Shatery_files/",
+            "http://www.all-quran.com/documents/Muhammad-Jibreel/Muhammad-Jibreel_files/",
+            "http://www.all-quran.com/documents/Muhammad-Ayoob/Muhammad-Ayoob_files/"
+    };
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
@@ -53,7 +69,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void showRecyclerViewList() {
         recyclerView.setLayoutManager(new GridLayoutManager(HomeActivity.this, 3));
-        AdapterHomeList adapterHomeList = new AdapterHomeList(HomeActivity.this, imageQori, nameQori);
+        AdapterHomeList adapterHomeList = new AdapterHomeList(HomeActivity.this, imageQori, nameQori, urlMurottal);
         adapterHomeList.setArrayList(list);
         recyclerView.setAdapter(adapterHomeList);
     }

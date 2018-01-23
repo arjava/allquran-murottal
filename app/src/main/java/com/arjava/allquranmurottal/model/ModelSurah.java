@@ -9,6 +9,15 @@ public class ModelSurah {
 
     int id_surah;
     String name_qori;
+    String name_surah;
+
+    public String getName_surah() {
+        return name_surah;
+    }
+
+    public void setName_surah(String name_surah) {
+        this.name_surah = name_surah;
+    }
 
     public int getId_surah() {
         return id_surah;

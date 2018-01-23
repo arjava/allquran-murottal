@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.arjava.allquranmurottal.R;
 import com.arjava.allquranmurottal.model.ModelSurah;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,8 +20,14 @@ import java.util.List;
 
 public class AdapterSurahList extends RecyclerView.Adapter<AdapterSurahList.ViewHolder> {
 
-    List<ModelSurah> modelSurah;
+    ArrayList<ModelSurah> modelSurah;
     Context context;
+    private final String[] nameSurah;
+
+    public AdapterSurahList(Context context, String[] nameSurah) {
+        this.context = context;
+        this.nameSurah = nameSurah;
+    }
 
     @Override
     public AdapterSurahList.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -33,15 +40,21 @@ public class AdapterSurahList extends RecyclerView.Adapter<AdapterSurahList.View
 
         ModelSurah result = modelSurah.get(position);
 
-        for (int i = position ; i<115 ; i++){
-
-        }
+        holder.textViewSurah.setText(result.getName_surah());
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return modelSurah == null ? 0 : modelSurah.size();
+    }
+
+    public ArrayList<ModelSurah> getModelSurah() {
+        return modelSurah;
+    }
+
+    public void setModelSurah(ArrayList<ModelSurah> modelSurah) {
+        this.modelSurah = modelSurah;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

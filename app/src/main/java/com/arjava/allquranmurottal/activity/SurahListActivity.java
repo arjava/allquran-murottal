@@ -2,9 +2,15 @@ package com.arjava.allquranmurottal.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.arjava.allquranmurottal.R;
+import com.arjava.allquranmurottal.adapter.AdapterSurahList;
+import com.arjava.allquranmurottal.model.ModelSurah;
+
+import java.util.ArrayList;
 
 public class SurahListActivity extends AppCompatActivity {
 
@@ -41,11 +47,22 @@ public class SurahListActivity extends AppCompatActivity {
             "An Nas : Manusia"
     };
 
+    AdapterSurahList adapterSurahList;
+    RecyclerView recyclerView;
+    ArrayList<ModelSurah> surahArrayList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_surah_list);
         id_surah += 1;
         Log.d("ID_SURAH", "onCreate: "+id_surah);
+
+        recyclerView = findViewById(R.id.rvSurah);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(SurahListActivity.this));
+        adapterSurahList = new AdapterSurahList(SurahListActivity.this, nameSurah);
+        adapterSurahList.setModelSurah(surahArrayList);
+        recyclerView.setAdapter(adapterSurahList);
     }
 }

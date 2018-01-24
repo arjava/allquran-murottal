@@ -15,9 +15,6 @@ import java.util.ArrayList;
 public class SurahListActivity extends AppCompatActivity {
 
     int id_surah = 001;
-    String url = "http://all-quran.net/documents/Abd_Al_Muhsin_Al_Qasim/Abd_Al_Muhsin_Al_Qasim_files/001.mp3";
-    String url_abdul_al_baset = "http://all-quran.net/documents/Abd_Al_Baset_Muratal/Abd_Al_Baset_Muratal_files/"+id_surah+".mp3";
-    String url_mishari_al_efasy = "http://www.all-quran.com/documents/Mishary-Al-Efasy/Mishary-Al-Efasy_files/"+id_surah+".mp3";
 
     String[] nameSurah = {
             "Al Fatihah : Pembukaan", "Al Baqarah : Sapi Betina", "Ali Imran : Keluarga Imran",
@@ -47,7 +44,6 @@ public class SurahListActivity extends AppCompatActivity {
             "An Nas : Manusia"
     };
 
-    AdapterSurahList adapterSurahList;
     RecyclerView recyclerView;
     ArrayList<ModelSurah> surahArrayList;
 
@@ -59,9 +55,16 @@ public class SurahListActivity extends AppCompatActivity {
         Log.d("ID_SURAH", "onCreate: "+id_surah);
 
         recyclerView = findViewById(R.id.rvSurah);
+
         recyclerView.setHasFixedSize(true);
+
+        showRecyclerViewList();
+
+    }
+
+    private void showRecyclerViewList() {
         recyclerView.setLayoutManager(new LinearLayoutManager(SurahListActivity.this));
-        adapterSurahList = new AdapterSurahList(SurahListActivity.this, nameSurah);
+        AdapterSurahList adapterSurahList = new AdapterSurahList(SurahListActivity.this, nameSurah);
         adapterSurahList.setModelSurah(surahArrayList);
         recyclerView.setAdapter(adapterSurahList);
     }

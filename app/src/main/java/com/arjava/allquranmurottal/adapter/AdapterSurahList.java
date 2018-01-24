@@ -2,6 +2,7 @@ package com.arjava.allquranmurottal.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ public class AdapterSurahList extends RecyclerView.Adapter<AdapterSurahList.View
     public AdapterSurahList(Context context, String[] nameSurah) {
         this.context = context;
         this.nameSurah = nameSurah;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -38,15 +40,20 @@ public class AdapterSurahList extends RecyclerView.Adapter<AdapterSurahList.View
     @Override
     public void onBindViewHolder(AdapterSurahList.ViewHolder holder, int position) {
 
-        ModelSurah result = modelSurah.get(position);
+        for (int id = 1; id <= nameSurah.length; id++){
+            String ids = String.valueOf(id)+".mp3";
+            Log.d("AdapterSurahList", "onBindViewHolder: ID_SURAH : "+ids);
+        }
 
-        holder.textViewSurah.setText(result.getName_surah());
+        holder.textViewSurah.setText(nameSurah[position]);
+        Log.d("AdapterSurahList", "onBindViewHolder: Surah = "+ nameSurah[position]);
+        Log.d("AdapterSurahList", "onBindViewHolder: Size = "+ nameSurah.length);
 
     }
 
     @Override
     public int getItemCount() {
-        return modelSurah == null ? 0 : modelSurah.size();
+        return nameSurah.length;
     }
 
     public ArrayList<ModelSurah> getModelSurah() {
